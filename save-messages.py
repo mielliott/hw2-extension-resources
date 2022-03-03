@@ -16,7 +16,7 @@ def get_raw_request(prepared_request):
         prepared_request.path_url,
         "HTTP/1.1",
         "\n".join('{}: {}'.format(key, value) for key, value in headers.items()),
-        "\n\n" + prepared_request.body.decode("utf-8") if prepared_request.body != None else "")
+        "\n\n" + prepared_request.body.decode("utf-8", "ignore") if prepared_request.body != None else "")
 
 def get_raw_response(response):
     from http import HTTPStatus
@@ -25,7 +25,7 @@ def get_raw_response(response):
         response.status_code,
         HTTPStatus(response.status_code).name,
         "\n".join('{}: {}'.format(key, value) for key, value in response.headers.items()),
-        "\n\n" + response.content.decode("utf-8") if response.content != None else "")
+        "\n\n" + response.content.decode("utf-8", "ignore") if response.content != None else "")
 
 # We only need the response object because it contains the request object
 def print_request_and_response(response):
@@ -76,7 +76,7 @@ response = {
 response =  namedtuple("ReconstructedResponse", response.keys())(*response.values())
 
 # Echo response
-print(response.content.decode("utf-8"))
+print(response.content.decode("utf-8", "ignore"))
 
 # Append request and response to a file
 assert len(sys.argv) >=2, "You must specify a file to save the HTTP request and response to"
