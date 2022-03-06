@@ -1,6 +1,6 @@
 # EEL6761: Cloud Computing - Resources for the Homework 2 Extension
 
-  In the assignment, you are required to submit a log of the raw HTTP requests and responses sent to and from the AWS APIs. This repository provides scripts that will help you build that log. If you choose to build a shell script rather than a Python script, see [For Shell Users](#for-shell-users) below.
+  In the assignment, you are required to submit a log file named "messages.txt" containing the raw HTTP requests and responses sent to and from the AWS APIs. This repository provides scripts that will help you build that log. If you choose to build a shell script rather than a Python script, see [For Shell Users](#for-shell-users) below.
 
 ## For Python Users
 
