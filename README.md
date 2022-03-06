@@ -1,5 +1,7 @@
 # EEL6761: Cloud Computing - Resources for the Homework 2 Extension
 
+In the assignment, you are required to submit a log of the raw HTTP requests and responses sent to and from the AWS APIs. This repository provides scripts that will help you build that log.
+
 ## For Python users
 
 [print_http.py](print_http.py) contains functions to help you print your HTTP requests and responses. To import functions, copy the files of this repository to the same directory as your script so that you may run `from print_http import print_request_and_response`.
@@ -57,7 +59,7 @@ The document has moved
 With log.py:
 
 ```
-$ awscurl --verbose http://google.com 2>&1 | python3 ./log.py log.txt
+$ awscurl --verbose http://google.com 2>&1 | python3 ./log.py messages.txt
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
 <H1>301 Moved</H1>
@@ -66,10 +68,10 @@ The document has moved
 </BODY></HTML>
 ```
 
-Which appends text to the file `log.txt`:
+Which appends the HTTP request sent to google.com and google.com's response to the file `messages.txt`:
 
 ```
-$ cat log.txt
+$ cat messages.txt
 ---REQUEST---
 GET / HTTP/1.1
 Accept: application/xml
@@ -103,7 +105,7 @@ The document has moved
 If you run `log.py` multiple times, you will build a list of requests and responses:
 
 ```
-$ awscurl --verbose http://google.com 2>&1 | python3 ./log.py log.txt
+$ awscurl --verbose http://google.com 2>&1 | python3 ./log.py messages.txt
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
 <H1>301 Moved</H1>
@@ -111,7 +113,7 @@ The document has moved
 <A HREF="http://www.google.com/">here</A>.
 </BODY></HTML>
 
-$ awscurl --verbose http://google.com 2>&1 | python3 ./log.py log.txt
+$ awscurl --verbose http://google.com 2>&1 | python3 ./log.py messages.txt
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
 <H1>301 Moved</H1>
@@ -120,10 +122,10 @@ The document has moved
 </BODY></HTML>
 ```
 
-Then find two pairs of requests and responses inside `log.txt`:
+Then find two pairs of requests and responses inside `messages.txt`:
 
 ```
-$ cat log.txt
+$ cat messages.txt
 ---REQUEST---
 GET / HTTP/1.1
 Accept: application/xml
