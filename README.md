@@ -52,7 +52,25 @@ Note that this will append to the file, not overwrite it, so you can call this f
 
 ## For Shell Users
 
-[log.py](log.py) parses the output of `awscurl --verbose 2>&1`, saves the raw HTTP requests and responses to a file, then echoes the body of the response. Note that you MUST include the `--verbose` (or `-v`) flag and redirect stderr to stdout using `2>&1`.
+Although you were originally shown how to use the "curl" command line tool, it seems to be unstable for some AWS API commands, and so we ask you to instead use the "awscurl" tool, which has similar syntax to curl but has better support for the AWS APIs. It can be installed using pip:
+
+```bash
+$ pip install awscurl
+```
+
+If the installation fails, you may need to update your requests package:
+
+```bash
+$ pip install --upgrade requests
+```
+
+Once installed, please review `awscurl`'s help page:
+
+```bash
+$ awscurl --help
+```
+
+[log.py](log.py) parses the output of `awscurl --verbose 2>&1`, saves the raw HTTP requests and responses to a file, then echoes the body of the response. Note that you MUST include awscurl's `--verbose` (or `-v`) flag and redirect stderr to stdout using `2>&1`.
 
 Without log.py:
 
