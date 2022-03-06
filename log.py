@@ -58,7 +58,5 @@ assert len(sys.argv) >=2, "You must specify a file to save the HTTP request and 
 assert len(sys.argv) == 2, "Too many arguments provided for " + sys.argv[0]
 
 file_name = sys.argv[1]
-with open(file_name, 'a') as file:
-    sys.stdout = file
-    print_request_and_response(response)
-    print()
+print_request_and_response(response, file_name)
+print()
