@@ -7,6 +7,8 @@
 # e.g.,
 #   awscurl --verbose http://google.com 2>&1 | python ./save-requests.py messages.txt
 
+MAX_BYTES_TO_READ = 1048576
+
 import sys
 import re
 import ast
@@ -15,7 +17,7 @@ from functools import reduce
 from collections import namedtuple
 from print_http import print_request_and_response
 
-lines = [line.rstrip() for line in sys.stdin.readlines()]
+lines = [line.rstrip() for line in sys.stdin.readlines(MAX_BYTES_TO_READ)]
 
 def find(lines, pattern, fallback):
     return next((match[1] for match in filter(None, (re.search(pattern, line) for line in lines))), fallback)
