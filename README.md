@@ -1,10 +1,10 @@
 # EEL6761: Cloud Computing - Resources for the Homework 2 Extension
 
-In the assignment, you are required to submit a log of the raw HTTP requests and responses sent to and from the AWS APIs. This repository provides scripts that will help you build that log.
+In the assignment, you are required to submit a log of the raw HTTP requests and responses sent to and from the AWS APIs. This repository provides scripts that will help you build that log. If you choose to build a shell script rather than a Python script, see [#for-shell-users]("For Shell Users") below.
 
-## For Python users
+## For Python Users
 
-[print_http.py](print_http.py) contains functions to help you print your HTTP requests and responses. To import functions, copy the files of this repository to the same directory as your script so that you may run `from print_http import print_request_and_response`.
+[print_http.py](print_http.py) contains functions to help you print your HTTP requests and responses. When you send a request using Python's "requests" library, you will receive a response object. Use that response object as the parameter to the function `print_request_and_response(your_response_object)` as demonstrated below. Before your can import the function using `from print_http import print_request_and_response`, you must copy the files of this repository (specifically, "\_\_init\_\_.py" and "print_http.py") to the same directory as your script.
 
 Example usage:
 
@@ -40,7 +40,7 @@ Set-Cookie: 1P_JAR=2022-03-03-19; expires=Sat, 02-Apr-2022 19:22:58 GMT; path=/;
 <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="en" ...
 ```
 
-## For shell users
+## For Shell Users
 
 [log.py](log.py) parses the output of `awscurl --verbose 2>&1`, saves the raw HTTP requests and responses to a file, then echoes the body of the response. Note that you MUST include the `--verbose` (or `-v`) flag and redirect stderr to stdout using `2>&1`.
 
