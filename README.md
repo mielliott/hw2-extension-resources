@@ -8,13 +8,15 @@
 
 Example usage:
 
+```python
+import requests
+from print_http import print_request_and_response
+response = requests.get("http://google.com")
+print_request_and_response(response)
 ```
-$ python3
->>> import requests
->>> from print_http import print_request_and_response
->>> response = requests.get("http://google.com")
->>> print_request_and_response(response)
 
+Output:
+```
 ---REQUEST---
 GET / HTTP/1.1
 User-Agent: python-requests/2.23.0
@@ -39,6 +41,14 @@ Set-Cookie: 1P_JAR=2022-03-03-19; expires=Sat, 02-Apr-2022 19:22:58 GMT; path=/;
 
 <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="en" ...
 ```
+
+You can print the request and response directly to a file by adding the file name as the second parameter:
+
+```python
+print_request_and_response(response, "messages.txt")
+```
+
+Note that this will append to the file, not overwrite it, so you can call this function multiple times on the same file to record a sequence of requests and responses.
 
 ## For Shell Users
 
